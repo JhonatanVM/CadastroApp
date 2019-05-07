@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-UI", "1-UI", "{480C7A33-FB31-40F1-A192-00B3BF5E1AC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Negocio", "2-Negocio", "{1D8FABB0-01C0-4529-97D8-2775286A191F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Dados", "3-Dados", "{33F54CE4-8D8B-4DE0-9EAC-8AB1DF6F9B00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroApp.Negocio", "CadastroApp.Negocio\CadastroApp.Negocio.csproj", "{690DD122-48F9-4EDD-94F8-D62496DD8CD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroApp.Dominio", "CadastroApp.Dominio\CadastroApp.Dominio.csproj", "{EC5685BA-6F61-433B-9822-0A8C9682C155}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroApp.Dado", "CadastroApp.Dado\CadastroApp.Dado.csproj", "{64ADEC26-14BA-4E27-9DE2-4F096F5980DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroApp.UI", "CadastroApp.UI\CadastroApp.UI.csproj", "{81196D90-DAC6-4AED-B038-D45453C2945D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{690DD122-48F9-4EDD-94F8-D62496DD8CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{690DD122-48F9-4EDD-94F8-D62496DD8CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{690DD122-48F9-4EDD-94F8-D62496DD8CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{690DD122-48F9-4EDD-94F8-D62496DD8CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC5685BA-6F61-433B-9822-0A8C9682C155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC5685BA-6F61-433B-9822-0A8C9682C155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC5685BA-6F61-433B-9822-0A8C9682C155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC5685BA-6F61-433B-9822-0A8C9682C155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64ADEC26-14BA-4E27-9DE2-4F096F5980DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64ADEC26-14BA-4E27-9DE2-4F096F5980DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64ADEC26-14BA-4E27-9DE2-4F096F5980DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64ADEC26-14BA-4E27-9DE2-4F096F5980DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81196D90-DAC6-4AED-B038-D45453C2945D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81196D90-DAC6-4AED-B038-D45453C2945D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81196D90-DAC6-4AED-B038-D45453C2945D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81196D90-DAC6-4AED-B038-D45453C2945D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{690DD122-48F9-4EDD-94F8-D62496DD8CD3} = {1D8FABB0-01C0-4529-97D8-2775286A191F}
+		{EC5685BA-6F61-433B-9822-0A8C9682C155} = {1D8FABB0-01C0-4529-97D8-2775286A191F}
+		{64ADEC26-14BA-4E27-9DE2-4F096F5980DF} = {33F54CE4-8D8B-4DE0-9EAC-8AB1DF6F9B00}
+		{81196D90-DAC6-4AED-B038-D45453C2945D} = {480C7A33-FB31-40F1-A192-00B3BF5E1AC1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86CF1458-BFA8-4E96-AC45-4299DFAF413E}
+	EndGlobalSection
+EndGlobal
