@@ -13,7 +13,7 @@ create table dbo.PessoaFisica(
 	Complemento varchar(50),
 	Bairro varchar(50) not null,
 	Cidade varchar(50) not null,
-	UF varchar(8) not null,
+	UF varchar(2) not null,
 
 	CPF varchar(11) not null,
 	DataDeNascimento Date not null,
@@ -31,7 +31,7 @@ create table dbo.PessoaJuridica(
 	Complemento varchar(50),
 	Bairro varchar(50) not null,
 	Cidade varchar(50) not null,
-	UF varchar(8) not null,
+	UF varchar(2) not null,
 
 	CNPJ varchar(14) not null,
 	RazaoSocial varchar(50) not null,
