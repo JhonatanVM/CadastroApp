@@ -1,5 +1,4 @@
 ﻿using CadastroApp.Dado.Interfaces;
-using CadastroApp.Dado.Servicos;
 using CadastroApp.Dominio.Entidades;
 using CadastroApp.Negocio.Interfaces;
 using System;

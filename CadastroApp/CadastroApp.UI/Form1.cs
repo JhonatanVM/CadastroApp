@@ -1,7 +1,6 @@
 ﻿using CadastroApp.Dominio.Entidades;
 using CadastroApp.Dominio.Entidades.EntidadeBase;
 using CadastroApp.Negocio.Interfaces;
-using CadastroApp.Negocio.Servicos;
 using System;
 using System.Windows.Forms;
 
