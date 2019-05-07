@@ -51,8 +51,8 @@ namespace CadastroApp.Dominio.Validacoes
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty()
                 .WithMessage("UF é obrigatório.")
-                .Length(1, 8)
-                .WithMessage("UF deve ter entre 1 e 8 caracteres.");
+                .Length(2)
+                .WithMessage("UF deve ter 2 caracteres.");
 
 
             RuleFor(e => e.CNPJ)

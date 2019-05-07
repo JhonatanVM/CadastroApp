@@ -39,7 +39,7 @@ namespace CadastroApp.UI
                 Complemento = ComplementoTextBox.Text,
                 Bairro = BairroTextBox.Text,
                 Cidade = CidadeTextBox.Text,
-                UF = UfTextBox.Text,
+                UF = UfTextBox.Text.ToUpper(),
 
                 CPF = CpfOrCnpjMaskedTextBox.Text.Replace(" ", "").Replace(",", "").Replace("-", ""),
                 DataDeNascimento = DateTime.TryParse(DataNascOrRazaoSocialMaskedTextBox.Text, out date) == true ? date : DateTime.MinValue,
@@ -67,7 +67,7 @@ namespace CadastroApp.UI
                 Complemento = ComplementoTextBox.Text,
                 Bairro = BairroTextBox.Text,
                 Cidade = CidadeTextBox.Text,
-                UF = UfTextBox.Text,
+                UF = UfTextBox.Text.ToUpper(),
 
                 CNPJ = CpfOrCnpjMaskedTextBox.Text.Replace(" ", "").Replace(",", "").Replace("/", "").Replace("-", ""),
                 RazaoSocial = DataNascOrRazaoSocialMaskedTextBox.Text,
