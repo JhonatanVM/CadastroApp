@@ -1,21 +1,18 @@
-﻿using CadastroApp.Dado.Servicos;
+﻿using CadastroApp.Dado.Interfaces;
+using CadastroApp.Dado.Servicos;
 using CadastroApp.Dominio.Entidades;
-using CadastroApp.Dominio.Validacoes;
+using CadastroApp.Negocio.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CadastroApp.Negocio.Servicos
 {
-    public class CadastroNegocio
+    public class CadastroNegocio : ICadastroNegocio
     {
-        private readonly CadastroDados _cadastroDados;
+        private readonly ICadastroDados _cadastroDados;
 
-        public CadastroNegocio()
+        public CadastroNegocio(ICadastroDados cadastroDados)
         {
-            _cadastroDados = new CadastroDados();
+            _cadastroDados = cadastroDados;
         }
 
         public string InserirPessoaFisica(PessoaFisica pessoaFisica)
@@ -38,7 +35,7 @@ namespace CadastroApp.Negocio.Servicos
 
         public string InserirPessoaJuridica(PessoaJuridica pessoaJuridica)
         {
-            if (_cadastroDados.ObterPorCPF(pessoaJuridica.CNPJ) != null)
+            if (_cadastroDados.ObterPorCNPJ(pessoaJuridica.CNPJ) != null)
             {
                 return "Não é possível realizar o cadastro com este CNPJ!";
             }

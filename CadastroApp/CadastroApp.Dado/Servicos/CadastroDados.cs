@@ -1,11 +1,11 @@
 ﻿using CadastroApp.Dado.Context;
+using CadastroApp.Dado.Interfaces;
 using CadastroApp.Dominio.Entidades;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace CadastroApp.Dado.Servicos
 {
-    public class CadastroDados
+    public class CadastroDados : ICadastroDados
     {
         private readonly CadastroAppContext _context;
 

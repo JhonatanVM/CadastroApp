@@ -1,5 +1,4 @@
-﻿using CadastroApp.Dominio.Validacoes;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CadastroApp.Dominio.Entidades.EntidadeBase

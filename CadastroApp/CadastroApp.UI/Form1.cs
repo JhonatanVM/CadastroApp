@@ -1,34 +1,25 @@
 ﻿using CadastroApp.Dominio.Entidades;
 using CadastroApp.Dominio.Entidades.EntidadeBase;
+using CadastroApp.Negocio.Interfaces;
 using CadastroApp.Negocio.Servicos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CadastroApp.UI
 {
     public partial class Form1 : Form
     {
-        private readonly CadastroNegocio _cadastroNegocio;
-        private PessoaFisica pessoaFisica;
-        private PessoaJuridica pessoaJuridica;
-        private int Checked = 1;
+        private readonly ICadastroNegocio _cadastroNegocio;
 
-        public Form1()
+        public Form1(ICadastroNegocio cadastroNegocio)
         {
             InitializeComponent();
-            _cadastroNegocio = new CadastroNegocio();
+            _cadastroNegocio = cadastroNegocio;
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            if (Checked == 1)
+            if (PessoaFisicaRadioButton.Checked)
             {
                 InserirPessoaFisica();
             }
@@ -41,15 +32,15 @@ namespace CadastroApp.UI
         private void InserirPessoaFisica()
         {
             DateTime date;
-            pessoaFisica = new PessoaFisica
+            var pessoaFisica = new PessoaFisica
             {
-                CEP = CEPMaskedTextBox.Text.Replace(" ", "").Replace(".", "").Replace("-", ""),
+                CEP = CepMaskedTextBox.Text.Replace(" ", "").Replace(".", "").Replace("-", ""),
                 Logradouro = LogradouroTextBox.Text,
                 Numero = NumeroTextBox.Text,
                 Complemento = ComplementoTextBox.Text,
                 Bairro = BairroTextBox.Text,
                 Cidade = CidadeTextBox.Text,
-                UF = UFTextBox.Text,
+                UF = UfTextBox.Text,
 
                 CPF = CpfOrCnpjMaskedTextBox.Text.Replace(" ", "").Replace(",", "").Replace("-", ""),
                 DataDeNascimento = DateTime.TryParse(DataNascOrRazaoSocialMaskedTextBox.Text, out date) == true ? date : DateTime.MinValue,
@@ -57,7 +48,7 @@ namespace CadastroApp.UI
                 Sobrenome = SobrenomeTextBox.Text
             };
 
-            if (!ValidateObjectAndShowMessageIfError(pessoaFisica))
+            if (!ValidaObjetoEMostraErroSeHouver(pessoaFisica))
             {
                 return;
             }
@@ -69,22 +60,22 @@ namespace CadastroApp.UI
 
         private void InserirPessoaJuridica()
         {
-            pessoaJuridica = new PessoaJuridica
+            var pessoaJuridica = new PessoaJuridica
             {
-                CEP = CEPMaskedTextBox.Text.Replace(" ", "").Replace(".", "").Replace("-", ""),
+                CEP = CepMaskedTextBox.Text.Replace(" ", "").Replace(".", "").Replace("-", ""),
                 Logradouro = LogradouroTextBox.Text,
                 Numero = NumeroTextBox.Text,
                 Complemento = ComplementoTextBox.Text,
                 Bairro = BairroTextBox.Text,
                 Cidade = CidadeTextBox.Text,
-                UF = UFTextBox.Text,
+                UF = UfTextBox.Text,
 
                 CNPJ = CpfOrCnpjMaskedTextBox.Text.Replace(" ", "").Replace(",", "").Replace("/", "").Replace("-", ""),
                 RazaoSocial = DataNascOrRazaoSocialMaskedTextBox.Text,
                 NomeFantasia = NomeOrNomeFantasiaTextBox.Text
             };
 
-            if (!ValidateObjectAndShowMessageIfError(pessoaJuridica))
+            if (!ValidaObjetoEMostraErroSeHouver(pessoaJuridica))
             {
                 return;
             }
@@ -94,7 +85,7 @@ namespace CadastroApp.UI
             MessageBox.Show(message, "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private bool ValidateObjectAndShowMessageIfError(Pessoa pessoa)
+        private bool ValidaObjetoEMostraErroSeHouver(Pessoa pessoa)
         {
             var result = pessoa.Validate();
             if (!result.IsValid)
@@ -104,6 +95,7 @@ namespace CadastroApp.UI
                 {
                     errorMessage += $"   - {error.ErrorMessage}\n";
                 }
+
                 MessageBox.Show($"Formulário preenchido incorretamente:\n\n{errorMessage}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -112,10 +104,10 @@ namespace CadastroApp.UI
 
         private void PessoaFisicaRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            Checked = 1;
-
             SobrenomeLlabel.Visible = true;
             SobrenomeTextBox.Visible = true;
+
+            MainGroupBox.Text = "Pessoa Física";
 
             CpfOrCnpjLabel.Text = "CPF";
             CpfOrCnpjMaskedTextBox.Mask = "999.999.999-99";
@@ -131,11 +123,11 @@ namespace CadastroApp.UI
 
         private void PessoaJuridicaRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            Checked = 2;
-
             SobrenomeLlabel.Visible = false;
             SobrenomeTextBox.Visible = false;
             SobrenomeTextBox.Text = "";
+
+            MainGroupBox.Text = "Pessoa Jurídica";
 
             CpfOrCnpjLabel.Text = "CNPJ";
             CpfOrCnpjMaskedTextBox.Mask = "99.999.999/9999-99";

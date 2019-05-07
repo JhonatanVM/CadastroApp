@@ -16,7 +16,7 @@ namespace CadastroApp.Dado.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["Cadastro"].ConnectionString);
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["CadastroApp"].ConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
