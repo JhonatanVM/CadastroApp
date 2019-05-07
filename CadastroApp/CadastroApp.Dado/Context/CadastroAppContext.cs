@@ -1,6 +1,7 @@
 ﻿using CadastroApp.Dado.EntityTypeConfiguration;
 using CadastroApp.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 namespace CadastroApp.Dado.Context
 {
@@ -15,7 +16,7 @@ namespace CadastroApp.Dado.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(DbConnectionString.ConnectionString);
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["Cadastro"].ConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

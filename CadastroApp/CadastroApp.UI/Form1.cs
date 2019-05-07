@@ -51,20 +51,20 @@ namespace CadastroApp.UI
                 Cidade = CidadeTextBox.Text,
                 UF = UFTextBox.Text,
 
-                CPF = CPFMaskedTextBox.Text.Replace(" ", "").Replace(",", "").Replace("-", ""),
-                DataDeNascimento = DateTime.TryParse(DataNascimentoMaskedTextBox.Text, out date) == true ? date : DateTime.MinValue,
-                Nome = NomeTextBox.Text,
+                CPF = CpfOrCnpjMaskedTextBox.Text.Replace(" ", "").Replace(",", "").Replace("-", ""),
+                DataDeNascimento = DateTime.TryParse(DataNascOrRazaoSocialMaskedTextBox.Text, out date) == true ? date : DateTime.MinValue,
+                Nome = NomeOrNomeFantasiaTextBox.Text,
                 Sobrenome = SobrenomeTextBox.Text
             };
 
-            if (!ShowValidationResult(pessoaFisica))
+            if (!ValidateObjectAndShowMessageIfError(pessoaFisica))
             {
                 return;
             }
 
             var message = _cadastroNegocio.InserirPessoaFisica(pessoaFisica);
 
-            MessageBox.Show(message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(message, "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void InserirPessoaJuridica()
@@ -79,22 +79,22 @@ namespace CadastroApp.UI
                 Cidade = CidadeTextBox.Text,
                 UF = UFTextBox.Text,
 
-                CNPJ = CNPJTextBox.Text.Replace(" ", "").Replace(",", "").Replace("/", "").Replace("-", ""),
-                RazaoSocial = RazaoSocialTextBox.Text,
-                NomeFantasia = NomeFantasiaTextBox.Text
+                CNPJ = CpfOrCnpjMaskedTextBox.Text.Replace(" ", "").Replace(",", "").Replace("/", "").Replace("-", ""),
+                RazaoSocial = DataNascOrRazaoSocialMaskedTextBox.Text,
+                NomeFantasia = NomeOrNomeFantasiaTextBox.Text
             };
 
-            if (!ShowValidationResult(pessoaJuridica))
+            if (!ValidateObjectAndShowMessageIfError(pessoaJuridica))
             {
                 return;
             }
 
             var message = _cadastroNegocio.InserirPessoaJuridica(pessoaJuridica);
 
-            MessageBox.Show(message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(message, "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private bool ShowValidationResult(Pessoa pessoa)
+        private bool ValidateObjectAndShowMessageIfError(Pessoa pessoa)
         {
             var result = pessoa.Validate();
             if (!result.IsValid)
@@ -110,20 +110,43 @@ namespace CadastroApp.UI
             return true;
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void PessoaFisicaRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             Checked = 1;
-            PainelPadrao.Visible = true;
-            PainelPessoaFisica.Visible = true;
-            PainelPessoaJuridica.Visible = false;
+
+            SobrenomeLlabel.Visible = true;
+            SobrenomeTextBox.Visible = true;
+
+            CpfOrCnpjLabel.Text = "CPF";
+            CpfOrCnpjMaskedTextBox.Mask = "999.999.999-99";
+            CpfOrCnpjMaskedTextBox.Text = "";
+
+            DataNascOrRazaoSociaLabel.Text = "Data de Nascimento";
+            DataNascOrRazaoSocialMaskedTextBox.Mask = "99/99/9999";
+            DataNascOrRazaoSocialMaskedTextBox.Text = "";
+
+            NomeOrNomeFantasiaLabel.Text = "Nome";
+            NomeOrNomeFantasiaTextBox.Text = "";
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void PessoaJuridicaRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             Checked = 2;
-            PainelPadrao.Visible = true;
-            PainelPessoaFisica.Visible = false;
-            PainelPessoaJuridica.Visible = true;
+
+            SobrenomeLlabel.Visible = false;
+            SobrenomeTextBox.Visible = false;
+            SobrenomeTextBox.Text = "";
+
+            CpfOrCnpjLabel.Text = "CNPJ";
+            CpfOrCnpjMaskedTextBox.Mask = "99.999.999/9999-99";
+            CpfOrCnpjMaskedTextBox.Text = "";
+
+            DataNascOrRazaoSociaLabel.Text = "Razão Social";
+            DataNascOrRazaoSocialMaskedTextBox.Mask = "";
+            DataNascOrRazaoSocialMaskedTextBox.Text = "";
+
+            NomeOrNomeFantasiaLabel.Text = "Nome Fantasia";
+            NomeOrNomeFantasiaTextBox.Text = "";
         }
     }
 }
