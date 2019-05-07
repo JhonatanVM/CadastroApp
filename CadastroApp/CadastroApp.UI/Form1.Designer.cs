@@ -276,7 +276,7 @@
             this.PessoaFisicaRadioButton.AutoSize = true;
             this.PessoaFisicaRadioButton.Checked = true;
             this.PessoaFisicaRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PessoaFisicaRadioButton.Location = new System.Drawing.Point(249, 74);
+            this.PessoaFisicaRadioButton.Location = new System.Drawing.Point(240, 74);
             this.PessoaFisicaRadioButton.Name = "PessoaFisicaRadioButton";
             this.PessoaFisicaRadioButton.Size = new System.Drawing.Size(120, 22);
             this.PessoaFisicaRadioButton.TabIndex = 0;
@@ -289,7 +289,7 @@
             // 
             this.PessoaJuridicaRadioButton.AutoSize = true;
             this.PessoaJuridicaRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PessoaJuridicaRadioButton.Location = new System.Drawing.Point(382, 74);
+            this.PessoaJuridicaRadioButton.Location = new System.Drawing.Point(366, 74);
             this.PessoaJuridicaRadioButton.Name = "PessoaJuridicaRadioButton";
             this.PessoaJuridicaRadioButton.Size = new System.Drawing.Size(132, 22);
             this.PessoaJuridicaRadioButton.TabIndex = 1;
