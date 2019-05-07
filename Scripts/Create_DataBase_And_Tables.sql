@@ -4,6 +4,7 @@ go
 use CadastroApp
 go
 
+
 create table dbo.PessoaFisica(
 	Id int primary key identity(1,1) not null,
 	CEP varchar(8) not null,
@@ -20,6 +21,7 @@ create table dbo.PessoaFisica(
 	Sobrenome varchar(15) not null
 );
 go
+
 
 create table dbo.PessoaJuridica(
 	Id int primary key identity(1,1) not null,
