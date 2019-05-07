@@ -17,7 +17,7 @@ create table dbo.PessoaFisica(
 
 	CPF varchar(11) not null,
 	DataDeNascimento Date not null,
-	Nome varchar(20) not null,
+	Nome varchar(15) not null,
 	Sobrenome varchar(15) not null
 );
 go
